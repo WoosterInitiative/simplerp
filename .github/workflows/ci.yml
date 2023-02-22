@@ -74,4 +74,4 @@ jobs:
       with:
         push: true
         tags: user/app:latest
-        file: production.yml
+        file: compose/production/django/Dockerfile
