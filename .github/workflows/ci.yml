@@ -74,4 +74,4 @@ jobs:
       with:
         push: true
         tags: user/app:latest
-        file: simplerp/production.yml
+        file: production.yml
