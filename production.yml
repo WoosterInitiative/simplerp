@@ -12,6 +12,7 @@ services:
       dockerfile: ./compose/production/django/Dockerfile
 
     image: simplerp_production_django
+    container_name: simplerp_django
     depends_on:
       - postgres
       - redis
@@ -19,12 +20,15 @@ services:
       - ./.envs/.production/.django
       - ./.envs/.production/.postgres
     command: /start
+    ports:
+      - "0.0.0.0:8080:5000"
 
   postgres:
     build:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
     image: simplerp_production_postgres
+    container_name: simplerp_postgres
     volumes:
       - production_postgres_data:/var/lib/postgresql/data
       - production_postgres_data_backups:/backups
@@ -36,13 +40,14 @@ services:
       context: .
       dockerfile: ./compose/production/traefik/Dockerfile
     image: simplerp_production_traefik
+    container_name: simplerp_traefik
     depends_on:
       - django
     volumes:
       - production_traefik:/etc/traefik/acme
     ports:
-      - "0.0.0.0:80:80"
-      - "0.0.0.0:443:443"
+      - "0.0.0.0:85:80"
+      - "0.0.0.0:444:443"
 
   redis:
     image: redis:6
