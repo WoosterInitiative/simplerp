@@ -1,9 +1,8 @@
 from address.models import AddressField
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from globals.models import BaseModel
 from phonenumber_field.modelfields import PhoneNumberField
-
-from simplerp.globals.models import BaseModel
 
 
 # Create your models here.
