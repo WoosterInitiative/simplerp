@@ -1,6 +1,5 @@
-from django.contrib import admin
-
 from customers.models import Customer
+from django.contrib import admin
 from globals.admin import BaseAdminModel
 
 

@@ -10,6 +10,10 @@ class Customer(BaseModel):
     business = models.CharField(
         _("business"), help_text=_("optional"), max_length=50, blank=True
     )
-    shipping_address = AddressField(verbose_name=_("shipping address"))
-    billing_address = AddressField(verbose_name=_("billing address"))
+    shipping_address = AddressField(
+        verbose_name=_("shipping address"), related_name="shipping"
+    )
+    billing_address = AddressField(
+        verbose_name=_("billing address"), related_name="billing"
+    )
     phone = PhoneNumberField(_("phone"))
